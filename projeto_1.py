@@ -44,24 +44,25 @@ while True:
     sleep(5)
 
     # 6º Passo - Verificar se postagem já foi curtida ou não
-    coracao = pyautogui.locateCenterOnScreen('coracao.png')
-    sleep(1)
-
+    try:
+        coracao = pyautogui.locateCenterOnScreen('coracao.png')
+        sleep(1)
     # 7º Passo - Se já tiver curtido, fazer nada e pausar o bot por 24horas
-    if coracao is not None:
-        sleep(86400)
-
+        if coracao is not None:
+            sleep(86400)
     # 8º Passo - Caso contrário, curtir a foto
-    elif coracao == None:
-        pyautogui.click(coracao[0],coracao[1],duration=2)
+    except pyautogui.ImageNotFoundException as erro:
+        pyautogui.click(499,686,duration=2)
         sleep(5)
         # 9º Passo - Caso contrário, comentar na foto
         pyautogui.click(542,790,duration=2)
         sleep(3)
         pyautogui.typewrite('Let them cook!')
         sleep(5)
-        pyautogui.click(833,892,duration=1)
-        sleep(1)
+        pyautogui.click(836,786,duration=1)
+        sleep(5)
+
+
 
     # 10º Passo - Sair da postagem
     pyautogui.click(912,111,duration=1)
